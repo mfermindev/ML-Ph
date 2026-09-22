@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce5d3"/><stop offset=".58" stop-color="#aab99c"/><stop offset="1" stop-color="#f3d3b5"/></linearGradient></defs>
+<rect width="900" height="1100" fill="url(#g)"/>
+<circle cx="450" cy="365" r="150" fill="#fffdf7" opacity=".45"/>
+<path d="M205 940c30-260 150-390 245-390s215 130 245 390" fill="#52604b" opacity=".28"/>
+<text x="450" y="990" text-anchor="middle" font-family="Georgia" font-size="45" fill="#445442">FOTÓGRAFO</text>
+<text x="450" y="1040" text-anchor="middle" font-family="Arial" font-size="20" fill="#445442">REEMPLAZAR POR TU RETRATO</text>
+</svg>
