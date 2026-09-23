@@ -41,7 +41,6 @@ slider.oninput=()=>rawWrap.style.width=slider.value+"%";
 
 document.querySelector("#p360").src=C.immersive.photo360.preview;
 document.querySelector("#v360-poster").src=C.immersive.video360.poster;
-document.querySelector("#model-poster").src=C.immersive.model3d.poster;
 
 const videoGrid=document.querySelector("#video-grid");
 C.videos.forEach(v=>{
@@ -53,11 +52,93 @@ C.videos.forEach(v=>{
 const menu=document.querySelector("#menu"), toggle=document.querySelector("#menu-toggle");
 toggle.onclick=()=>menu.classList.toggle("show");
 
-const audio=document.querySelector("#jazz-audio"), music=document.querySelector("#music-toggle");
-const volume=document.querySelector("#music-volume"), volumeLabel=document.querySelector("#volume-label");
-if(audio && volume){audio.volume=Number(volume.value);}
-if(volume){volume.oninput=()=>{audio.volume=Number(volume.value); volumeLabel.textContent=Math.round(Number(volume.value)*100)+"%";};}
-music.onclick=async()=>{ if(audio.paused){try{await audio.play();music.textContent="❚❚ Jazz";}catch(e){alert("Reemplazá assets/music/jazz.mp3 por un MP3 real.");}} else {audio.pause();music.textContent="♪ Jazz";} };
+// ==========================================================
+// MILU - JAZZ
+// ==========================================================
+
+const audio = document.querySelector("#jazz-audio");
+const music = document.querySelector("#music-toggle");
+const volume = document.querySelector("#music-volume");
+const volumeLabel = document.querySelector("#volume-label");
+
+if (audio) {
+    audio.volume = Number(volume?.value || 0.35);
+}
+
+function updateMusicUI() {
+    if (!audio || !music) return;
+
+    music.textContent = audio.paused
+        ? "♪ Jazz"
+        : "❚❚ Jazz";
+}
+
+async function startMusic() {
+    if (!audio || !audio.paused) return;
+
+    try {
+        await audio.play();
+
+        console.log("Jazz reproduciendo");
+
+        updateMusicUI();
+
+        // Ya arrancó: eliminamos los listeners
+        removeStartListeners();
+
+    } catch (error) {
+        console.log("Audio todavía bloqueado:", error);
+    }
+}
+
+function removeStartListeners() {
+    document.removeEventListener("pointerdown", startMusic);
+    document.removeEventListener("keydown", startMusic);
+}
+
+// PRIMERA interacción del usuario
+document.addEventListener("pointerdown", startMusic);
+document.addEventListener("keydown", startMusic);
+
+
+// Botón Jazz
+music?.addEventListener("click", async (event) => {
+
+    event.stopPropagation();
+
+    if (!audio) return;
+
+    if (audio.paused) {
+
+        await startMusic();
+
+    } else {
+
+        audio.pause();
+        updateMusicUI();
+
+    }
+});
+
+
+// Volumen
+volume?.addEventListener("input", () => {
+
+    if (!audio) return;
+
+    audio.volume = Number(volume.value);
+
+    if (volumeLabel) {
+        volumeLabel.textContent =
+            Math.round(audio.volume * 100) + "%";
+    }
+});
+
+
+audio?.addEventListener("play", updateMusicUI);
+audio?.addEventListener("pause", updateMusicUI);
+
+updateMusicUI();
 
 function msg(){
  const n=document.querySelector("#name").value||"Visitante";
@@ -79,3 +160,4 @@ document.addEventListener("keydown", e=>{
     document.querySelector("#menu")?.classList.remove("show");
   }
 });
+

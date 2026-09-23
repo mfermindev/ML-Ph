@@ -37,11 +37,6 @@ window.ML_CONTENT = {
       poster:"assets/photos/hero/hero-sunset.svg",
       src:"assets/videos/360/REEMPLAZAR-video-360.mp4",
       title:"Patagonia 360°"
-    },
-    model3d: {
-      poster:"assets/photos/gallery/gallery-01.svg",
-      src:"assets/models/REEMPLAZAR-modelo-3d.glb",
-      title:"Modelo 3D"
     }
   },
 

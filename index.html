@@ -1,20 +1,27 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ML-Story · Momentos Irrepetibles de Luz Unica</title><link rel="icon" href="assets/icons/favicon.svg">
+<title>ML-Story · Momentos Irrepetibles, Luz Unica</title><link rel="icon" href="assets/icons/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css"></head><body>
 <header class="header"><a class="logo" href="#inicio"><img src="assets/icons/logo.svg" alt="ML-Story"></a><button id="menu-toggle" class="menu-toggle">☰</button>
-<nav id="menu" class="nav"><a href="#galeria">Galería</a><a href="#historias">Historias</a><a href="#proceso">RAW / Edición</a><a href="#inmersivo">360° / 3D</a><a href="#videos">Video</a><a href="#acerca">Acerca de mí</a><a href="#contacto">Contacto</a></nav>
+<nav id="menu" class="nav"><a href="#galeria">Galería</a><a href="#historias">Historias</a><a href="#proceso">RAW / Edición</a><a href="#inmersivo">360° </a><a href="#videos">Video</a><a href="#acerca">Acerca de mí</a><a href="#contacto">Contacto</a></nav>
 <div class="music-player">
   <button id="music-toggle" class="music" aria-label="Reproducir o pausar jazz">♪ Jazz</button>
   <input id="music-volume" type="range" min="0" max="1" value="0.35" step="0.05" aria-label="Volumen de música">
   <span id="volume-label">35%</span>
 </div></header>
-<audio id="jazz-audio" loop><source src="assets/music/jazz.mp3" type="audio/mpeg"></audio>
+<audio id="jazz-audio" loop preload="auto">
+    <source src="assets/music/jazz.mp3" type="audio/mpeg">
+</audio>
 
 <main>
-<section id="inicio" class="hero"><div class="hero-copy"><p class="eyebrow">FOTOGRAFÍA · HISTORIAS · VIDA</p><h1>Momentos<br>Llenos de Luz</h1>
-<p>Montañas, lagos, personas y atardeceres convertidos en historias visuales.</p><a class="btn" href="#galeria">Explorar galería</a><a class="btn" href="#inmersivo">Explorar 360° / 3D</a></div>
+<section id="inicio" class="hero"><div class="hero-copy"><p class="eyebrow">FOTOGRAFÍA · HISTORIAS · VIDA</p><h1 class="milu-title">
+    <span><strong>M</strong>omentos</span>
+    <span><strong>I</strong>rrepetibles,</span>
+    <span><strong>L</strong>uz</span>
+    <span><strong>Ú</strong>nica</span>
+</h1>
+<p>Montañas, lagos, personas y atardeceres convertidos en historias visuales.</p><a class="btn" href="#galeria">Explorar galería</a><a class="btn" href="#inmersivo">Explorar 360° </a></div>
 <img class="hero-img" src="assets/photos/hero/hero-sunset.svg" alt="Portada ML-Story"></section>
 
 <section id="galeria" class="section"><div class="heading"><p class="eyebrow">FOTOGRAFÍAS</p><h2>Galería</h2><p>Las tarjetas se generan automáticamente desde <b>js/content.js</b>.</p></div>
@@ -26,11 +33,10 @@
 <section id="proceso" class="section"><div class="heading"><p class="eyebrow">EL PROCESO</p><h2>RAW / Edición</h2><p>Arrastrá sobre la imagen para comparar el original y la edición final.</p></div>
 <div class="compare"><img id="edited-img" alt="Foto editada"><div id="raw-wrap" class="raw-wrap"><img id="raw-img" alt="Foto RAW"></div><input id="compare-range" type="range" min="0" max="100" value="50"></div></section>
 
-<section id="inmersivo" class="section soft"><div class="heading"><p class="eyebrow">EXPERIENCIAS INMERSIVAS</p><h2>360° & 3D</h2><p>El proyecto deja preparados los lugares para fotografía 360°, video 360° y modelos 3D.</p></div>
+<section id="inmersivo" class="section soft"><div class="heading"><p class="eyebrow">EXPERIENCIAS INMERSIVAS</p><h2>360° </h2><p>El proyecto deja preparados los lugares para fotografía 360°, video 360° y modelos 3D.</p></div>
 <div class="immersive-grid">
 <article class="immersive-card"><img id="p360" alt="Fotografía 360"><div><span class="badge">FOTO 360°</span><h3>Panorama</h3><p>Reemplazá el panorama ficticio por una imagen equirectangular 2:1. El README explica cómo activar un visor WebGL.</p></div></article>
 <article class="immersive-card"><img id="v360-poster" alt="Video 360"><div><span class="badge">VIDEO 360°</span><h3>Video inmersivo</h3><p>Carpeta preparada para tu MP4 360°. Para producción conviene hosting de video especializado.</p></div></article>
-<article class="immersive-card"><img id="model-poster" alt="Modelo 3D"><div><span class="badge">MODELO 3D</span><h3>Objeto / escena 3D</h3><p>Carpeta preparada para archivos GLB/GLTF y posterior integración con model-viewer.</p></div></article>
 </div></section>
 
 <section id="videos" class="section"><div class="heading"><p class="eyebrow">HISTORIAS EN MOVIMIENTO</p><h2>Videos</h2><p>Videos normales, separados de las experiencias 360°.</p></div><div id="video-grid" class="video-grid"></div></section>
@@ -49,17 +55,46 @@
     <div class="about-details">
       <div><small>MI MIRADA</small><strong>Naturaleza · Retratos · Paisajes · Atardeceres</strong></div>
       <div><small>BASE</small><strong>Patagonia · Argentina</strong></div>
-      <div><small>PROYECTO</small><strong>ML-Story · Momentos Llenos de Luz</strong></div>
+      <div><small>PROYECTO</small><strong>ML-Story · Momentos Irrepetibles, Luz Unica</strong></div>
     </div>
     <p class="replace-note">Para personalizar esta sección, reemplazá <b>assets/photos/about/photographer.svg</b> por tu retrato y editá este texto en <b>index.html</b>.</p>
   </div>
 </section>
 
 <section id="contacto" class="section soft contact"><div><p class="eyebrow">HABLEMOS</p><h2>¿Tenés una historia para contar?</h2><p>Contacto directo por WhatsApp o email.</p></div>
-<div class="form"><input id="name" placeholder="Nombre"><input id="email" type="email" placeholder="Email"><textarea id="message" rows="6" placeholder="Mensaje"></textarea><div><button id="wa" class="btn">WhatsApp</button><button id="mail" class="btn">Email</button></div></div></section>
-</main>
-<footer class="footer"><span>ML-Story · Momentos Llenos de Luz</span><span>Fotografía · Historias · Vida</span></footer>
+<div class="form"><input id="name" placeholder="Nombre"><input id="email" type="email" placeholder="Email"><textarea id="message" rows="6" placeholder="Mensaje"></textarea><div><button id="wa" class="btn">WhatsApp</button><button id="mail" class="btn">Email</button>
+<a
+        class="btn"
+        href="https://www.instagram.com/ph.milumon/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Instagram
+    </a>
+</div></div></section>
 
+</main>
+<footer class="footer">
+
+    <span>
+        ML-Story · Momentos Irrepetibles, Luz Única
+    </span>
+
+    <div>
+        <a
+            href="https://www.instagram.com/ph.milumon/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Instagram
+        </a>
+
+        ·
+
+        <a href="mailto:mljm@gmail.com">
+            Email
+        </a>
+    </div>
+
+</footer>
 <div id="photo-modal" class="modal"><div class="modal-box"><button class="close-modal">×</button><img alt=""><div class="modal-copy"><p class="eyebrow">HISTORIA</p><h2></h2><p class="story"></p><p class="exif"></p></div></div></div>
 
 <script src="js/content.js"></script><script src="js/main.js"></script></body></html>
