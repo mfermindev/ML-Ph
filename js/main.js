@@ -52,92 +52,39 @@ C.videos.forEach(v=>{
 const menu=document.querySelector("#menu"), toggle=document.querySelector("#menu-toggle");
 toggle.onclick=()=>menu.classList.toggle("show");
 
-// ==========================================================
-// MILU - JAZZ
-// ==========================================================
-
+// Música: un solo control, evita el doble clic al iniciar.
 const audio = document.querySelector("#jazz-audio");
 const music = document.querySelector("#music-toggle");
 const volume = document.querySelector("#music-volume");
 const volumeLabel = document.querySelector("#volume-label");
-
-if (audio) {
-    audio.volume = Number(volume?.value || 0.35);
-}
-
+if (audio) audio.volume = Number(volume?.value ?? 0.35);
 function updateMusicUI() {
-    if (!audio || !music) return;
-
-    music.textContent = audio.paused
-        ? "♪ Jazz"
-        : "❚❚ Jazz";
+  if (music && audio) music.textContent = audio.paused ? "♪ Jazz" : "❚❚ Jazz";
+  if (volumeLabel && audio) volumeLabel.textContent = Math.round(audio.volume * 100) + "%";
 }
-
 async function startMusic() {
-    if (!audio || !audio.paused) return;
-
-    try {
-        await audio.play();
-
-        console.log("Jazz reproduciendo");
-
-        updateMusicUI();
-
-        // Ya arrancó: eliminamos los listeners
-        removeStartListeners();
-
-    } catch (error) {
-        console.log("Audio todavía bloqueado:", error);
-    }
+  if (!audio || !audio.paused) return;
+  try { await audio.play(); }
+  catch (err) { console.error("No se pudo reproducir jazz:", err); }
+  updateMusicUI();
 }
-
-function removeStartListeners() {
-    document.removeEventListener("pointerdown", startMusic);
-    document.removeEventListener("keydown", startMusic);
-}
-
-// PRIMERA interacción del usuario
-document.addEventListener("pointerdown", startMusic);
-document.addEventListener("keydown", startMusic);
-
-
-// Botón Jazz
-music?.addEventListener("click", async (event) => {
-
-    event.stopPropagation();
-
-    if (!audio) return;
-
-    if (audio.paused) {
-
-        await startMusic();
-
-    } else {
-
-        audio.pause();
-        updateMusicUI();
-
-    }
+// Un primer clic en cualquier lugar excepto el botón inicia el jazz.
+document.addEventListener("pointerdown", event => {
+  if (event.target.closest("#music-toggle, #music-volume")) return;
+  startMusic();
+}, { once: true });
+music?.addEventListener("click", async () => {
+  if (!audio) return;
+  if (audio.paused) await startMusic();
+  else audio.pause();
+  updateMusicUI();
 });
-
-
-// Volumen
 volume?.addEventListener("input", () => {
-
-    if (!audio) return;
-
-    audio.volume = Number(volume.value);
-
-    if (volumeLabel) {
-        volumeLabel.textContent =
-            Math.round(audio.volume * 100) + "%";
-    }
+  if (audio) audio.volume = Number(volume.value);
+  updateMusicUI();
 });
-
-
 audio?.addEventListener("play", updateMusicUI);
 audio?.addEventListener("pause", updateMusicUI);
-
 updateMusicUI();
 
 function msg(){
@@ -146,8 +93,8 @@ function msg(){
  const m=document.querySelector("#message").value||"Quisiera información.";
  return `Hola ML-Story! Soy ${n}.${e?`\nEmail: ${e}`:""}\n${m}`;
 }
-document.querySelector("#wa").onclick=()=>window.open("https://wa.me/54294?text="+encodeURIComponent(msg()),"_blank");
-document.querySelector("#mail").onclick=()=>location.href="mailto:mljm@gmail.com?subject="+encodeURIComponent("Consulta ML-Story")+"&body="+encodeURIComponent(msg());
+document.querySelector("#wa").onclick=()=>window.open("https://wa.me/543515058695?text="+encodeURIComponent(msg()),"_blank");
+document.querySelector("#mail").onclick=()=>location.href="mailto:af.mauro7@gmail.com?subject="+encodeURIComponent("Consulta ML-Story")+"&body="+encodeURIComponent(msg());
 
 
 // UX / responsive fixes
@@ -160,4 +107,3 @@ document.addEventListener("keydown", e=>{
     document.querySelector("#menu")?.classList.remove("show");
   }
 });
-

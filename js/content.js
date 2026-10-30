@@ -1,5 +1,5 @@
 // ==========================================================
-// ML-STORY · CONTENIDO
+// MILU · CONTENIDO
 // Para cambiar el portfolio, en general SOLO editá este archivo
 // y reemplazá los archivos ficticios dentro de /assets.
 // ==========================================================
@@ -7,11 +7,9 @@
 window.ML_CONTENT = {
   gallery: [
     {src:"assets/photos/gallery/image1.jpg", title:"Atardecer en Barilove", category:"paisajes", story:"Ultimo destello sobre las montañas.", camera:"Sony  III", lens:"24mm", aperture:"f/8", shutter:"1/250", iso:"100"},
-    {src:"assets/photos/gallery/gallery-02.svg", title:"Atardecer sobre el lago", category:"atardeceres", story:"El último reflejo cálido sobre el agua.", camera:"Sony  III", lens:"35mm", aperture:"f/5.6", shutter:"1/320", iso:"100"},
-    {src:"assets/photos/gallery/gallery-03.svg", title:"Naturaleza", category:"naturaleza", story:"Texturas y pequeños detalles del bosque.", camera:"Sony  III", lens:"85mm", aperture:"f/2.8", shutter:"1/500", iso:"200"},
-    {src:"assets/photos/gallery/gallery-04.svg", title:"Personas", category:"personas", story:"Retratos con luz natural.", camera:"Sony  III", lens:"85mm", aperture:"f/1.8", shutter:"1/500", iso:"200"},
-    {src:"assets/photos/gallery/gallery-05.svg", title:"Lago", category:"paisajes", story:"Silencio, agua y montaña.", camera:"Sony  III", lens:"24mm", aperture:"f/8", shutter:"1/200", iso:"100"},
-    {src:"assets/photos/gallery/gallery-06.svg", title:"Montaña", category:"paisajes", story:"Una tarde entre cumbres.", camera:"Sony  III", lens:"70mm", aperture:"f/7.1", shutter:"1/400", iso:"100"}
+    {src:"assets/photos/gallery/image2.jpg", title:"Atardecer2", category:"paisajes", story:"Ultimo destello sobre las montañas.", camera:"Sony  III", lens:"24mm", aperture:"f/8", shutter:"1/250", iso:"100"},
+    {src:"assets/photos/gallery/image3.jpg", title:"Atardecer3", category:"paisajes", story:"Ultimo destello sobre las montañas.", camera:"Sony  III", lens:"24mm", aperture:"f/8", shutter:"1/250", iso:"100"},
+    {src:"assets/photos/gallery/image4.jpeg", title:"Montañas al amanecer", category:"paisajes", story:"La primera luz sobre las montañas.", camera:"Sony A7 III", lens:"24mm", aperture:"f/8", shutter:"1/250", iso:"100"},
   ],
 
   stories: [
@@ -34,11 +32,10 @@ window.ML_CONTENT = {
       description:"Panorama interactivo. Para el visor 360 real, reemplazá el archivo y activá Pannellum según README."
     },
     video360: {
-      poster:"assets/photos/hero/hero-sunset.svg",
-      src:"assets/videos/360/REEMPLAZAR-video-360.mp4",
-      title:"Patagonia 360°"
-    }
-  },
+      poster:"assets/videos/360/home.png",
+      src:"assets/videos/360/visual.mp4",
+      title:"home 360°"
+    },},
 
   videos: [
     {title:"Patagonia en movimiento", poster:"assets/photos/hero/hero-sunset.svg", src:"assets/videos/normal/REEMPLAZAR-video-normal.mp4"}

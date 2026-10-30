@@ -167,20 +167,9 @@ img,video{max-width:100%}
   .modal-box{max-height:94vh;overflow:auto}
   .modal-box img{height:auto;max-height:52vh}
 }
-.milu-title {
-    display: flex;
-    flex-direction: column;
-    font-size: clamp(2.8rem, 5vw, 5rem);
-    line-height: 0.92;
-    letter-spacing: -0.02em;
-}
 
-.milu-title span {
-    display: block;
-}
-
-.milu-title strong {
-    color: #556e4f;
-    font-size: 1.12em;
-    font-weight: 600;
-}
+.milu-title{display:flex;flex-direction:column;font-size:clamp(2.4rem,4vw,4.2rem);line-height:1.02}
+.milu-title strong{color:#A8BFA3;font-weight:600}
+.video360-link{display:block;color:inherit;text-decoration:none}
+.video360-link img{display:block;width:100%}
+.video360-link .btn{display:inline-block;margin:12px 0}
