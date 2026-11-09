@@ -4,20 +4,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css"></head><body>
 <header class="header"><a class="logo" href="#inicio"><img src="assets/icons/logo.svg" alt="MILU"></a><button id="menu-toggle" class="menu-toggle">☰</button>
-<nav id="menu" class="nav"><a href="#galeria">Galería</a><a href="#historias">Historias</a><a href="#proceso">RAW / Edición</a><a href="#inmersivo">360°</a><a href="#videos">Video</a><a href="#acerca">Acerca de mí</a><a href="#contacto">Contacto</a></nav>
+<nav id="menu" class="nav"><a href="#bodas">Boda</a><a href="#fotografia">Fotografía</a><a href="#galeria">Galería</a><a href="#historias">Historias</a><a href="#proceso">RAW / Edición</a><a href="#inmersivo">360°</a><a href="#videos">Video</a><a href="#acerca">Acerca de mí</a><a href="#contacto">Contacto</a></nav>
 <div class="music-player">
   <button id="music-toggle" class="music" aria-label="Reproducir o pausar jazz">♪ Jazz</button>
   <input id="music-volume" type="range" min="0" max="1" value="0.35" step="0.05" aria-label="Volumen de música">
   <span id="volume-label">35%</span>
 </div></header>
-<audio id="jazz-audio" loop><source src="assets/music/jazz.mp3" type="audio/mpeg"></audio>
+<audio id="music" loop><source src="assets/music/jazz.mp3" type="audio/mpeg"></audio>
 
 <main>
 <section id="inicio" class="hero"><div class="hero-copy"><p class="eyebrow">FOTOGRAFÍA · HISTORIAS · VIDA</p><h1 class="milu-title"><span><strong>M</strong>omentos</span><span><strong>I</strong>rrepetibles,</span><span><strong>L</strong>uz</span><span><strong>Ú</strong>nica</span></h1>
 <p>Montañas, lagos, personas y atardeceres convertidos en historias visuales.</p><a class="btn" href="#galeria">Explorar galería</a><a class="btn" href="#inmersivo">Explorar 360°</a></div>
 <img class="hero-img" src="assets/photos/hero/hero-sunset.svg" alt="Portada MILU"></section>
 
-<section id="galeria" class="section"><div class="heading"><p class="eyebrow">FOTOGRAFÍAS</p><h2>Galería</h2><p>Las tarjetas se generan automáticamente desde <b>js/content.js</b>.</p></div>
+<section id="delis" class="section collection-section"><div class="heading"><p class="eyebrow">ENCUENTROS · NUEVOS COMIENZOS</p><h2>Inauguración Deli's</h2><p>Una nueva historia abre sus puertas.</p></div><div class="water-hero" data-collection="delis" data-effect="crosszoom" aria-label="Galería de la inauguración de Deli's"></div><p class="collection-note">Vista de muestra con paisajes de MILU. Próximamente, las fotos de la inauguración.</p></section>
+
+<section id="bodas" class="section collection-section"><div class="heading"><p class="eyebrow">DOS PERSONAS · UNA HISTORIA</p><h2>Boda</h2><p>Los gestos, los encuentros y la emoción de un día irrepetible.</p></div><div class="water-hero" data-collection="weddings" aria-label="Galería de boda"></div><p class="collection-note">Vista de muestra con paisajes de MILU. Próximamente, nuestras historias de boda.</p></section>
+
+<section id="fotografia" class="section soft collection-section"><div class="heading"><p class="eyebrow">UNA MIRADA · MUCHAS HISTORIAS</p><h2>Fotografía</h2><p>Un recorrido entre montañas, luz y momentos que invitan a quedarse.</p></div><div class="water-hero" data-collection="photography" data-effect="displacement-map" aria-label="Galería fotográfica"></div></section>
+
+<section id="galeria" class="section"><div class="heading"><p class="eyebrow">FOTOGRAFÍAS</p><h2>Galería</h2><p>Instantes que se convierten en historias.</p></div>
 <div class="filters"><button class="active" data-filter="todas">Todas</button><button data-filter="paisajes">Paisajes</button><button data-filter="atardeceres">Atardeceres</button><button data-filter="naturaleza">Naturaleza</button><button data-filter="personas">Personas</button></div>
 <div id="gallery" class="gallery"></div></section>
 
@@ -57,9 +63,32 @@
 
 <section id="contacto" class="section soft contact"><div><p class="eyebrow">HABLEMOS</p><h2>¿Tenés una historia para contar?</h2><p>Contacto directo por WhatsApp o email.</p></div>
 <div class="form"><input id="name" placeholder="Nombre"><input id="email" type="email" placeholder="Email"><textarea id="message" rows="6" placeholder="Mensaje"></textarea><div><button id="wa" class="btn">WhatsApp</button><button id="mail" class="btn">Email</button><a class="btn" href="https://www.instagram.com/ph.milumon/" target="_blank" rel="noopener noreferrer">Instagram</a></div></div></section>
+<section id="resenas" class="section reviews-section" aria-labelledby="reviews-title">
+  <div class="heading"><p class="eyebrow">HISTORIAS COMPARTIDAS</p><h2 id="reviews-title">Tu experiencia también cuenta</h2><p>Gracias por dejarme ser parte de tu historia.</p></div>
+  <div class="reviews-layout">
+    <div><h3>Lo que cuentan de MILU</h3><p id="reviews-list-status" role="status">Cargando reseñas…</p><div id="reviews-list" class="reviews-list"></div></div>
+    <form id="review-form" class="review-form" aria-labelledby="review-form-title">
+      <h3 id="review-form-title">Dejá tu experiencia</h3>
+      <label for="review-name">Nombre</label><input id="review-name" name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Tu nombre">
+      <fieldset class="review-rating"><legend>Valoración</legend><div class="rating-options">
+        <label><input type="radio" name="rating" value="1" required><span>1 ★</span></label>
+        <label><input type="radio" name="rating" value="2"><span>2 ★</span></label>
+        <label><input type="radio" name="rating" value="3"><span>3 ★</span></label>
+        <label><input type="radio" name="rating" value="4"><span>4 ★</span></label>
+        <label><input type="radio" name="rating" value="5"><span>5 ★</span></label>
+      </div></fieldset>
+      <label for="review-comment">Comentario</label><textarea id="review-comment" name="comment" rows="5" required minlength="10" maxlength="2000" placeholder="Contanos cómo fue tu experiencia"></textarea>
+      <div class="review-trap" aria-hidden="true"><label for="review-website">Sitio web</label><input id="review-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <p class="review-note">Tu nombre, valoración y comentario serán públicos cuando se apruebe la reseña.</p>
+      <button id="review-submit" class="btn" type="submit" disabled>Enviar reseña</button>
+      <p id="review-status" role="status" aria-live="polite"></p>
+      <noscript>Activá JavaScript para enviar y leer reseñas.</noscript>
+    </form>
+  </div>
+</section>
 </main>
 <footer class="footer"><span>MILU · Momentos Irrepetibles, Luz Única</span><span>Fotografía · Historias · Vida</span> <a href="https://www.instagram.com/ph.milumon/" target="_blank" rel="noopener noreferrer">Instagram</a></footer>
 
 <div id="photo-modal" class="modal"><div class="modal-box"><button class="close-modal">×</button><img alt=""><div class="modal-copy"><p class="eyebrow">HISTORIA</p><h2></h2><p class="story"></p><p class="exif"></p></div></div></div>
 
-<script src="js/content.js"></script><script src="js/main.js"></script></body></html>
+<script src="js/content.js"></script><script src="js/main.js"></script><script src="js/water-gallery.js"></script><script src="js/supabase-config.js"></script><script src="js/reviews.js"></script></body></html>
