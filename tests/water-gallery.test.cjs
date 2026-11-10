@@ -51,9 +51,14 @@ function setup({zoom=false,effect=null,reduced=false,fine=true,webgl=true,failIm
   };
 }
 
-test('Deli\'s aparece antes de Boda y las tres colecciones tienen imágenes existentes',()=>{
+test('las tres colecciones tienen portada, galería propia e imágenes existentes',()=>{
   const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
-  assert.ok(html.indexOf('id="delis"')<html.indexOf('id="bodas"'));
+  for(const key of ['photography','weddings','delis']){
+    assert.ok(html.includes(`data-collection="${key}"`));
+    assert.ok(html.includes(`data-photo-collection="${key}"`));
+  }
+  assert.ok(!html.includes('id="historias"'));
+  assert.ok(!html.includes('gallery-title'));
   const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../js/content.js'),'utf8'),context);
   for(const key of ['delis','weddings','photography'])for(const item of context.window.ML_CONTENT[key]){
     assert.ok(item.subtitle);assert.ok(fs.existsSync(path.join(__dirname,'..',item.src)));

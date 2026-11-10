@@ -18,6 +18,14 @@ begin
     raise exception 'FALLO: permite autoaprobar reseñas';
   exception when insufficient_privilege then null;
   end;
+  insert into public.reviews (name, rating, comment, social_network, social_username)
+    values ('Cliente social', 5, 'Reseña con perfil público opcional.', 'instagram', 'ana.fotos');
+  begin
+    insert into public.reviews (name, rating, comment, source, source_url)
+      values ('Origen falso', 5, 'No debe poder atribuirse a Google.', 'google', 'https://maps.app.goo.gl/test');
+    raise exception 'FALLO: permite falsificar el origen';
+  exception when insufficient_privilege then null;
+  end;
   begin
     update public.reviews set approved = true;
     raise exception 'FALLO: permite modificar reseñas';
